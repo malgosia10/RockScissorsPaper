@@ -3,19 +3,19 @@ import java.util.Scanner;
 public class RockScissorsPaper {
 
     private static String userChoice, computerChoice;
-    private static final String choice1 = "kamien";
-    private static final String choice2 = "nozyce";
-    private static final String choice3 = "papier";
+    private static final String rock = "kamien";
+    private static final String scissors = "nozyce";
+    private static final String paper = "papier";
 
     public static void main (String[] args) {
 
         Scanner scan = new Scanner(System.in);
 
         do {
-            System.out.println("Wpisz jedną z opcji: " + choice1 + ", " + choice2 + ", " + choice3);
+            System.out.println("Wpisz jedną z opcji: " + rock + ", " + scissors + ", " + paper);
             userChoice = scan.nextLine();
         }
-        while (!userChoice.equals(choice1) && !userChoice.equals(choice2) && !userChoice.equals(choice3));
+        while (!userChoice.equals(rock) && !userChoice.equals(scissors) && !userChoice.equals(paper));
 
         System.out.println("Komputer wybral " + genRandNum() + ". " + "Gracz wybrał " + userChoice + ". ");
         System.out.println(whosTheWinner());
@@ -24,11 +24,11 @@ public class RockScissorsPaper {
     public static String genRandNum(){
         byte randomNumber = (byte) (Math.random() * 3);
         if (randomNumber == 0) {
-            computerChoice = choice1;
+            computerChoice = rock;
         } else if (randomNumber == 1) {
-            computerChoice = choice2;
+            computerChoice = scissors;
         } else {
-            computerChoice = choice3;
+            computerChoice = paper;
         }
         return computerChoice;
     }
@@ -38,9 +38,9 @@ public class RockScissorsPaper {
         if (userChoice.equals(computerChoice)) {
             winner = "Remis";
         }
-        else if ((userChoice.equals(choice1) && computerChoice.equals(choice2))
-                || (userChoice.equals(choice2) && (computerChoice.equals(choice3))
-                || (userChoice.equals(choice3) && (computerChoice.equals(choice1))))) {
+        else if ((userChoice.equals(rock) && computerChoice.equals(scissors))
+                || (userChoice.equals(scissors) && (computerChoice.equals(paper))
+                || (userChoice.equals(paper) && (computerChoice.equals(rock))))) {
             winner = "Wygral gracz";
         }
         else {
